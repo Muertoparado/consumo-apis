@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "creacion de api",
-        "nueva api "
+        "nueva api ",
+        "adaptacion api pokemon"
     ]
 }
