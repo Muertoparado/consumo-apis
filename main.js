@@ -1,6 +1,8 @@
-const searchBtn = document.getElementById('searchBtn');
-const searchInput = document.getElementById('searchInput');
-const results = document.getElementById('results');
+const searchBtn = document.querySelector('#searchBtn');
+const searchInput = document.querySelector('#searchInput');
+const results = document.querySelector('#results');
+const btnSiguiente = document.querySelector('#btnSiguiente');
+const btnAnterior = document.querySelector('#btnAnterior');
 
  const getSuperhero = async (id) => {
  
@@ -23,6 +25,7 @@ const results = document.getElementById('results');
 
 searchBtn.addEventListener('click', async () => {
 
+
   const superhero = await getSuperhero(searchInput.value);
   const card = document.createElement('div');
   card.classList.add('card');
@@ -35,7 +38,7 @@ searchBtn.addEventListener('click', async () => {
   results.appendChild(card);
 });
 
-/* 
+
   btnSiguiente.addEventListener('click', () => {
     if(pagina < 10){
       pagina += 1;
@@ -49,7 +52,7 @@ searchBtn.addEventListener('click', async () => {
       getApi();
     }
   });
- */
+
 
 
  /*  formato poke api prueba funcional 
