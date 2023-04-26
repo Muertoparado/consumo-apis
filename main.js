@@ -5,45 +5,65 @@ const btnSiguiente = document.querySelector('#btnSiguiente');
 const btnAnterior = document.querySelector('#btnAnterior');
 
 
- const getSuperhero = async (id) => {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+ const getSuperhero = async (search) => {
+  const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${search}`);
   
-  console.log(response);
+  /* console.log(response); */
   const data = await response.json();
-  console.log(data);
+/*   console.log(data); */
   return data;
 
 }
-const paginacion = async () => {
-    let pag ="";
-    
-/*     getSuperhero(index);
-    console.log(`contador ${index}`); */
-    const responsePag = await fetch(`https://pokeapi.co/api/v2/ability/?limit=20&offset=20`);
-      responsePag.forEach(element => {
-        console.log(element);
-      });
-      console.log(responsePag);
-      const datapag = await responsePag.json();
-      return (datapag);
-}
-/* paginacion (); */
+/* const paginacion = () => {
+  for(let i=0; i<20; i++){
+    getSuperhero(i);
+  }
+
+} */
+/* 
+(async () =>{
+  console.log("Esta función se ejecuta automáticamente");
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=20&limit=20`); 
+  const data = await response.json();
+  let array=data;
  
-searchBtn.addEventListener('click', async () => {
+  for(let array in element => {
   
-  const superhero = await getSuperhero(searchInput.value);
   const card = document.createElement('div');
   card.classList.add('card');
   card.innerHTML = `
-    <h1>${superhero.name}</h1>
-    <img src="${superhero.sprites.front_default}" alt="xxxxx" />
-    <h2>${superhero.types[0].type.name}</h2>
-    <p>${superhero.abilities[0].ability.name}</p>
+    <h1>${element.name}</h1>
+    <img src="${element.sprites.front_default}"  />
+    <h2>${element.types[0].type.name}</h2>
+    <p>${element.abilities[0].ability.name}</p>
+    
   `;
   results.appendChild(card);
+});
+})(); */
+
+searchBtn.addEventListener('click', async () => {
+  
+  const superhero = await getSuperhero(searchInput.value);
+  console.log(superhero);
+  superhero.results.forEach(element => {
+    const card = document.createElement('div');
+  card.classList.add('card');
+  card.innerHTML = `
+    <h1>${element.name}</h1>
+    <img src="${element.image}" alt="xxxxx" />
+    <h2>${element.location.name}</h2>
+    <p>${element.species}</p>
+   
+  `;
+  results.appendChild(card);
+  });
+  
 
 });
-/* // 1. Función para obtener la lista de Pokémon
+/* 
+ 
+// 1. Función para obtener la lista de Pokémon
 const getPokemonList = async (offset) => {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=30&offset=\${offset}`);
   const data = await response.json();
