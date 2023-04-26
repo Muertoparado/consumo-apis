@@ -14,6 +14,20 @@ const btnAnterior = document.querySelector('#btnAnterior');
   return data;
 
 }
+const paginacion = async () => {
+    let pag ="";
+    
+/*     getSuperhero(index);
+    console.log(`contador ${index}`); */
+    const responsePag = await fetch(`https://pokeapi.co/api/v2/ability/?limit=20&offset=20`);
+      responsePag.forEach(element => {
+        console.log(element);
+      });
+      console.log(responsePag);
+      const datapag = await responsePag.json();
+      return (datapag);
+}
+/* paginacion (); */
  
 searchBtn.addEventListener('click', async () => {
   
@@ -22,7 +36,7 @@ searchBtn.addEventListener('click', async () => {
   card.classList.add('card');
   card.innerHTML = `
     <h1>${superhero.name}</h1>
-    <img src="${superhero.sprites.front_default}" alt="" />
+    <img src="${superhero.sprites.front_default}" alt="xxxxx" />
     <h2>${superhero.types[0].type.name}</h2>
     <p>${superhero.abilities[0].ability.name}</p>
   `;
@@ -51,9 +65,9 @@ const loadNextPage = async () => {
   currentPage++;
 
   // Llamar a la función 'displayPokemon' para cada Pokémon en la lista
-  for (const pokemon of pokemonList) {
-    await displayPokemon(pokemon);
-  }
+    for (const pokemon of pokemonList) {
+      await displayPokemon(pokemon);
+    }
 };
 
 // 4. Llamar a la función para cargar la primera página de Pokémon
@@ -61,6 +75,10 @@ loadNextPage(); */
 
 /* 
   btnSiguiente.addEventListener('click', () => {
+
+    for (const pokemon of pokemonList) {
+    await displayPokemon(pokemon);
+  }
     if(pagina < 1){
       pagina += 1;
       getSuperhero();
