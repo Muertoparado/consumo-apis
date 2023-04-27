@@ -4,69 +4,88 @@ const results = document.querySelector('#results');
 const btnSiguiente = document.querySelector('#btnSiguiente');
 const btnAnterior = document.querySelector('#btnAnterior');
 
-
- const getSuperhero = async (search) => {
-  const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${search}`);
-  
-  /* console.log(response); */
+/* 
+ const getSuperhero = async () => {
+  const response = await fetch(`https://rickandmortyapi.com/api/character/?name`);
   const data = await response.json();
-/*   console.log(data); */
+  console.log(data);
   return data;
 
+} */
+
+const busquedaId = async(id) =>{
+  const responseid = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+  
+  /* console.log(response); */
+  const dataid = await responseid.json();
+/*   console.log(data); */
+  return dataid;
 }
+
 /* const paginacion = () => {
   for(let i=0; i<20; i++){
     getSuperhero(i);
   }
 
 } */
-/* 
+
 (async () =>{
-  console.log("Esta función se ejecuta automáticamente");
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=20&limit=20`); 
-  const data = await response.json();
-  let array=data;
- 
-  for(let array in element => {
-  
-  const card = document.createElement('div');
-  card.classList.add('card');
-  card.innerHTML = `
-    <h1>${element.name}</h1>
-    <img src="${element.sprites.front_default}"  />
-    <h2>${element.types[0].type.name}</h2>
-    <p>${element.abilities[0].ability.name}</p>
     
-  `;
-  results.appendChild(card);
-});
-})(); */
+    const response = await fetch(`https://rickandmortyapi.com/api/character/?name`); 
+    console.log(response);
+    
+    const data = await response.json();
+    data.results.forEach(element => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+     
+     <div class="face front">
+     <h1 class="container bg-gradient m-2 w-auto mt-3">${element.name}</h1>
+     <div><img class="foto mt-5" src="${element.image}" alt="xxxxx" style="width: auto;" /><br></div>
+     
+     <h2 class=" mt-5">${element.location.name}</h2>
+     
+     <p>${element.species}</p>
+     <p>${element.status}</p>
+     </div>
+     <div class="face back">
+         <h3>Episodios</h3>
+         <p>${element.episode}</p>
+         <div class="link">
+             <a href="#">Details</a>
+         </div>
+     </div>
+ 
+    
+   `;
+   results.appendChild(card);
+   });
+   
+})();
 
 searchBtn.addEventListener('click', async () => {
   
-  const superhero = await getSuperhero(searchInput.value);
-  console.log(superhero);
+  const buscarid = await busquedaId(searchInput.value);
+  console.log(buscarid);
  /*  let results="" */
-  superhero.results.forEach(element => {
+  /* superhero.results.forEach(element => { */
     const card = document.createElement('div');
   card.classList.add('card');
   card.innerHTML = `
     
-    
-   
-
-    
     <div class="face front">
-    <h1 class="container bg-gradient m-2 w-auto mt-3">${element.name}</h1>
-    <div><img class="foto mt-5" src="${element.image}" alt="xxxxx" style="width: auto;" /><br></div>
+    <h1 class="container bg-gradient m-2 w-auto mt-3">${buscarid.name}</h1>
+    <div><img class="foto mt-5" src="${buscarid.image}" alt="xxxxx" style="width: auto;" /><br></div>
     
-    <h2 class=" mt-5">${element.location.name}</h2>
+    <h2 class=" mt-5">${buscarid.location.name}</h2>
     
-    <p>${element.species}</p>
+    <p>${buscarid.species}</p>
+    <p>${buscarid.status}</p>
     </div>
     <div class="face back">
-        <h3>Japan</h3>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste, nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam eos?</p>
+        <h3>Episodios</h3>
+        <p>${buscarid.episode}</p>
         <div class="link">
             <a href="#">Details</a>
         </div>
@@ -78,7 +97,7 @@ searchBtn.addEventListener('click', async () => {
   });
   
 
-});
+/* }); */
 /* 
  
 // 1. Función para obtener la lista de Pokémon
