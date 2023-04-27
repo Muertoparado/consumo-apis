@@ -46,14 +46,32 @@ searchBtn.addEventListener('click', async () => {
   
   const superhero = await getSuperhero(searchInput.value);
   console.log(superhero);
+ /*  let results="" */
   superhero.results.forEach(element => {
     const card = document.createElement('div');
   card.classList.add('card');
   card.innerHTML = `
-    <h1>${element.name}</h1>
-    <img src="${element.image}" alt="xxxxx" />
-    <h2>${element.location.name}</h2>
+    
+    
+   
+
+    
+    <div class="face front">
+    <h1 class="container bg-gradient m-2 w-auto mt-3">${element.name}</h1>
+    <div><img class="foto mt-5" src="${element.image}" alt="xxxxx" style="width: auto;" /><br></div>
+    
+    <h2 class=" mt-5">${element.location.name}</h2>
+    
     <p>${element.species}</p>
+    </div>
+    <div class="face back">
+        <h3>Japan</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius harum molestiae iste, nihil doloribus fugiat distinctio ducimus maxime totam nulla fuga odio non aperiam eos?</p>
+        <div class="link">
+            <a href="#">Details</a>
+        </div>
+    </div>
+
    
   `;
   results.appendChild(card);
