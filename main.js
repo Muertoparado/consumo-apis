@@ -4,14 +4,14 @@ const results = document.querySelector('#results');
 const btnSiguiente = document.querySelector('#btnSiguiente');
 const btnAnterior = document.querySelector('#btnAnterior');
 
-/* 
+
  const getSuperhero = async () => {
   const response = await fetch(`https://rickandmortyapi.com/api/character/?name`);
   const data = await response.json();
   console.log(data);
   return data;
 
-} */
+}
 
 const busquedaId = async(id) =>{
   const responseid = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
@@ -52,9 +52,6 @@ const busquedaId = async(id) =>{
      <div class="face back">
          <h3>Episodios</h3>
          <p>${element.episode}</p>
-         <div class="link">
-             <a href="#">Details</a>
-         </div>
      </div>
  
     
@@ -74,22 +71,22 @@ searchBtn.addEventListener('click', async () => {
   card.classList.add('card');
   card.innerHTML = `
     
-    <div class="face front">
-    <h1 class="container bg-gradient m-2 w-auto mt-3">${buscarid.name}</h1>
-    <div><img class="foto mt-5" src="${buscarid.image}" alt="xxxxx" style="width: auto;" /><br></div>
-    
-    <h2 class=" mt-5">${buscarid.location.name}</h2>
-    
-    <p>${buscarid.species}</p>
-    <p>${buscarid.status}</p>
-    </div>
-    <div class="face back">
-        <h3>Episodios</h3>
-        <p>${buscarid.episode}</p>
-        <div class="link">
-            <a href="#">Details</a>
-        </div>
-    </div>
+  <div class="face front">
+  <h1 class="container bg-gradient m-2 w-auto mt-3">${buscarid.name}</h1>
+  <div><img class="foto mt-5" src="${buscarid.image}" alt="xxxxx" style="width: auto;" /><br></div>
+  
+  <h2 class=" mt-5">${buscarid.location.name}</h2>
+  
+  <p>${buscarid.species}</p>
+  <p>${buscarid.status}</p>
+  </div>
+  <div class="face back">
+      <h3>Episodios</h3>
+      <p>${buscarid.episode}</p>
+      <div class="link">
+          <a href="#">Details</a>
+      </div>
+  </div>
 
    
   `;
