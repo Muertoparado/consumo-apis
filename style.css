@@ -31,6 +31,7 @@ body {
     width: 400px;
     height: 650px;
     margin: 20px;
+    flex-wrap: nowrap;
 }
 
 .card .face {
@@ -70,7 +71,7 @@ body {
     background: rgb(3, 35, 54);
     padding: 15px;
     color: #f3f3f3;
-    display: flex;
+   /*  display: flex; */
     flex-direction: column;
     justify-content: space-between;
     text-align: center;

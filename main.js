@@ -44,14 +44,16 @@ const busquedaId = async(id) =>{
      <h1 class="container bg-gradient m-2 w-auto mt-3">${element.name}</h1>
      <div><img class="foto mt-5" src="${element.image}" alt="xxxxx" style="width: auto;" /><br></div>
      
-     <h2 class=" mt-5">${element.location.name}</h2>
+     <h3 class=" mt-5">${element.location.name}</h3>
      
      <p>${element.species}</p>
+    
+     <p>Origen: ${element.origin.name}</p>
      <p>${element.status}</p>
      </div>
      <div class="face back">
          <h3>Episodios</h3>
-         <p>${element.episode}</p>
+         <a class="link" href="${element.episode}">${element.episode}</a>
      </div>
  
     
@@ -82,10 +84,8 @@ searchBtn.addEventListener('click', async () => {
   </div>
   <div class="face back">
       <h3>Episodios</h3>
-      <p>${buscarid.episode}</p>
-      <div class="link">
-          <a href="#">Details</a>
-      </div>
+      <a class="link" href="${buscarid.episode}">${buscarid.episode}</a>
+      
   </div>
 
    
