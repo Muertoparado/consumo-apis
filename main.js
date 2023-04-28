@@ -45,7 +45,7 @@ const busquedaId = async(id) =>{
       const card = document.createElement('div');
       card.classList.add('card');
       card.innerHTML = `
-     
+      <div class="col-4">
      <div class="face front">
      <h1 class="container bg-gradient m-2 w-auto mt-3">${element.name}</h1>
      <div><img class="foto mt-5" src="${element.image}" alt="xxxxx" style="width: auto;" /><br></div>
@@ -60,6 +60,7 @@ const busquedaId = async(id) =>{
      <div class="face back">
          <h3>Episodios</h3>
          <a class="link" href="${element.episode}">${element.episode}</a>
+     </div>
      </div>
  
     
@@ -78,7 +79,7 @@ searchBtn.addEventListener('click', async () => {
     const card = document.createElement('div');
   card.classList.add('card');
   card.innerHTML = `
-    
+    <div class="col-4">
   <div class="face front">
   <h1 class="container bg-gradient m-2 w-auto mt-3">${buscarid.name}</h1>
   <div><img class="foto mt-5" src="${buscarid.image}" alt="xxxxx" style="width: auto;" /><br></div>
@@ -92,6 +93,7 @@ searchBtn.addEventListener('click', async () => {
       <h3>Episodios</h3>
       <a class="link" href="${buscarid.episode}">${buscarid.episode}</a>
       
+  </div>
   </div>
 
    
