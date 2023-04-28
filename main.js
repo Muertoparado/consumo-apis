@@ -12,10 +12,16 @@ const btnAnterior = document.querySelector('#btnAnterior');
   return data;
 
 }
+const paginacion=async (pag)=>{
+  const pagina = await fetch(`ttps://rickandmortyapi.com/api/character?page=${pag}`);
+  const datapag = await pagina.json();
+  console.log(datapag);
+  return datapag;
+  
+}
 
 const busquedaId = async(id) =>{
   const responseid = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
-  
   /* console.log(response); */
   const dataid = await responseid.json();
 /*   console.log(data); */
@@ -44,12 +50,12 @@ const busquedaId = async(id) =>{
      <h1 class="container bg-gradient m-2 w-auto mt-3">${element.name}</h1>
      <div><img class="foto mt-5" src="${element.image}" alt="xxxxx" style="width: auto;" /><br></div>
      
-     <h3 class=" mt-5">${element.location.name}</h3>
+     <h3 class=" mt-5">Ubicacion: ${element.location.name}</h3>
      
-     <p>${element.species}</p>
+     <p>Especie: ${element.species}</p>
     
      <p>Origen: ${element.origin.name}</p>
-     <p>${element.status}</p>
+     <p>estado: ${element.status}</p>
      </div>
      <div class="face back">
          <h3>Episodios</h3>
@@ -79,10 +85,10 @@ searchBtn.addEventListener('click', async () => {
   
   <h2 class=" mt-5">${buscarid.location.name}</h2>
   
-  <p>${buscarid.species}</p>
+  <p>Especie: ${buscarid.species}</p>
   <p>${buscarid.status}</p>
   </div>
-  <div class="face back">
+  <div class="face back ">
       <h3>Episodios</h3>
       <a class="link" href="${buscarid.episode}">${buscarid.episode}</a>
       
@@ -127,42 +133,19 @@ const loadNextPage = async () => {
 // 4. Llamar a la función para cargar la primera página de Pokémon
 loadNextPage(); */
 
-/* 
-  btnSiguiente.addEventListener('click', () => {
 
-    for (const pokemon of pokemonList) {
-    await displayPokemon(pokemon);
-  }
+  btnSiguiente.addEventListener('click', () => {
     if(pagina < 1){
       pagina += 1;
-      getSuperhero();
+      
     }
+    paginacion(pagina);
   });
   
   btnAnterior.addEventListener('click', () => {
     if(pagina > 1){
       pagina -= 1;
-      getSuperhero();
+     
     }
-  }); */
-
-
-
- /*  formato poke api prueba funcional 
- async function obtenerSuperheroe(id) {
-    // Reemplaza YOUR_API_KEY con tu clave de API real
-   
-    const url = `https://pokeapi.co/api/v2/pokemon/ditto`;
-  
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error al obtener datos de la API:', error);
-    }
-  }
-  
-  obtenerSuperheroe(2); // Obtiene información sobre el superhéroe con ID 1
-  
- */
+    paginacion(pagina);
+  });
